@@ -1,0 +1,83 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <h2><a href="#" id="logo">Sapori Di Casa</a></h2>
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="" />
+      </a>
+      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbars-rs-food">
+        <ng-template [ngIf]="logout">
+          <span>  <button  mat-raised-button color="warn" (click)="onClickMe()">Déconnexion</button>       </span> 
+         
+         </ng-template>
+        <ng-template [ngIf]="account" [ngIfElse]="Connecter">
+        <p>
+          <span class="accounts"><a class="profile"  [routerLink]="['/account']" >Mon Compte  </a> <mat-icon>supervised_user_circle</mat-icon> </span>
+      </p>
+        </ng-template>
+        <ng-template   #Connecter>
+          <span   class="accounts"    ><a class="profile" [routerLink]="['/login']" >Connecter  </a> <mat-icon>supervised_user_circle</mat-icon> </span>
+        </ng-template>
+        <p>
+          <span matBadge="{{panieritems}}" class="accounts" matBadgeSize="medium"><a class="panier" [routerLink]="['/panier']"  href="/panier"> Mon Panier   </a> <mat-icon>shopping_basket</mat-icon>   </span>
+      </p>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item "><a  href="/accueil">Accueil</a></li>
+          <li class="nav-item"><a  href="/menu">La Carte</a></li>
+          <li class="nav-item"><a  [routerLink]="['/commande']"  >Commande Emporter</a></li>
+          <li class="nav-item"><a  href="/contact">Contact</a></li>
+        </ul>
+      </div>
+  
+    </nav>
+    <h1 class="carte"> Nos Plats Choix</h1>
+      <hr>
+      <div  id="menu-filters"  >
+      <ul >
+        <li *ngFor="let liste of Listes" ><a class="filter " data-filter=".menu-restaurant" (click)="onTabClick(liste.name)" role="button">{{liste.name}}</a></li>
+         <!-- <li><a class="filter " data-filter=".breakfast" role="button" >Breakfast</a></li>
+         <li><a class="filter" data-filter=".lunch"role="button" >Lunch</a></li>
+         <li><a class="filter" data-filter=".dinner" role="button" >Dinner</a></li> -->
+      </ul>
+      </div>
+      <div class="grid-container">
+      <div class="card-wrapper" *ngFor="let menus of menu">
+        <div class="card">
+        <div class="image-wrapper">
+          <img src="{{menus.photo}}" alt="" class="image" />
+        </div>
+        <div class="content-wrapper">
+       
+          <div class="actions">
+             <div class="price">
+              {{menus.nom}} {{menus.prix}}€
+             </div>
+            <button   (click)="Add(menus)"    id="cart" class="button flip green-solid cart">
+              <span class="front">Add to Cart</span>
+              <span class="backside">Added</span>
+            </button>
+         
+          </div>
+        </div>
+      </div>
+      </div>
+    
+
+   
+   
+     
+    
+    
+     
+
+    </div>
+    
+  </header>
+  
+ 
+ 
+  

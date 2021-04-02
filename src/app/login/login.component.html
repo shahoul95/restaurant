@@ -1,0 +1,161 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <h2><a href="#" id="logo">Sapori Di Casa</a></h2>
+    <a class="navbar-brand" href="index.html">
+      <img src="images/logo.png" alt="" />
+    </a>
+    <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbars-rs-food"
+      aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbars-rs-food">
+      <ng-template [ngIf]="logout">
+        <span>  <button  mat-raised-button color="warn" (click)="onClickMe()">Déconnexion</button>       </span> 
+       
+       </ng-template>
+      <ng-template [ngIf]="account" [ngIfElse]="Connecter">
+      <p>
+        <span ><a class="profile" [routerLink]="['/account']" >Mon Compte  </a> <mat-icon>supervised_user_circle</mat-icon> </span>
+    </p>
+      </ng-template>
+      <ng-template   #Connecter>
+        <span   class="accounts"   ><a class="profile"  [routerLink]="['/login']" >Connecter  </a> <mat-icon>supervised_user_circle</mat-icon> </span>
+      </ng-template>
+
+      <p>
+        <span   class="accounts" matBadge="{{panieritems}}" matBadgeSize="medium"><a class="paniers"[routerLink]="['/panier']"> Mon Panier   </a>  <mat-icon>shopping_basket</mat-icon>   </span>
+    </p>
+      <ul class="navbar-nav ml-auto">
+
+
+
+        <li class="nav-item "><a href="/accueil">Accueil</a></li>
+        <li class="nav-item"><a href="/menu">La Carte</a></li>
+        <li class="nav-item"><a [routerLink]="['/commande']">Commande Emporter</a></li>
+        <li class="nav-item"><a href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+  </nav>
+
+  <div class="login-box">
+    <div class="lb-header">
+      <a (click)="ChangeLogin()" [class.special]="activelogin" class="{{activelogin}}" id="login-box-link">Connexion</a>
+      <a (click)="ChangeSignup()" [class.special]="activesign" class="{{activesign}}"
+        id="signup-box-link">Inscription</a>
+    </div>
+
+    <ng-template [ngIf]="display" [ngIfElse]="elseTemplate">
+      <ng-template [ngIf]=" loginsuccess">
+        <h5>Erreur de mot de passe et/ou d'email</h5>
+      </ng-template>
+     
+      <form [formGroup]="logs.login" (ngSubmit)="onSubmitlogin()" class="email-login">
+
+        <div class="u-form-group">
+          <input type="email" placeholder="Email" formControlName="mail" />
+        </div>
+        <div class="validation" *ngIf="logs.login.get('mail').dirty && logs.login.get('mail').errors?.required">
+          Email est requis
+        </div>
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <div class="validation" *ngIf="logs.login.get('password').dirty && logs.login.get('password').errors?.required">
+          Mot de passe est requis
+        </div>
+        <div class="u-form-group">
+          <button [disabled]="!logs.login.valid">Connecter</button>
+        </div>
+        <div class="u-form-group">
+          <a href="#" class="forgot-password">Forgot password?</a>
+        </div>
+        <div class="social-login">
+          <a href="#">
+            <i class="fa fa-google-plus fa-lg"></i>
+            log in with Google
+          </a>
+        </div>
+      </form>
+    </ng-template>
+    <ng-template #elseTemplate>
+
+      <ng-template [ngIf]="success">
+        <h5>Création du compte avec succès</h5>
+      </ng-template>
+      <ng-template [ngIf]="notsuccess">
+        <h5>Cette adresse e-mail ou numéro déja utilisé. Veuillez en saisir une nouvelle </h5>
+      </ng-template>
+
+      <form [formGroup]="logs.createaccount" (ngSubmit)="onSubmitcreate()" class="email-signup">
+        <div class="u-form-group">
+          <input type="text" placeholder="Nom" formControlName="nom" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('nom').dirty && logs.createaccount.get('nom').errors?.required">
+          Nom est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" placeholder="Prenom" formControlName="prenom" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('prenom').dirty && logs.createaccount.get('prenom').errors?.required">
+          Prenom est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" placeholder="Adresse" formControlName="adresse" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('adresse').dirty && logs.createaccount.get('adresse').errors?.required">
+          Adresse est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" placeholder="Ville" formControlName="ville" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('ville').dirty && logs.createaccount.get('ville').errors?.required">
+          Ville est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" placeholder="Code Postale" formControlName="postale" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('postale').dirty && logs.createaccount.get('postale').errors?.required">
+          Code postale est requis
+        </div>
+        <div class="u-form-group">
+          <input type="tel" placeholder="Téléphone" formControlName="telephone" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('telephone').dirty && logs.createaccount.get('telephone').errors?.required">
+          Télephone est requis
+        </div>
+        <div class="u-form-group">
+          <input type="email" placeholder="Email" formControlName="mail" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('mail').dirty && logs.createaccount.get('mail').errors?.required">
+          Mail est requis
+        </div>
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" formControlName="password" />
+        </div>
+        <div class="validation"
+          *ngIf="logs.createaccount.get('password').dirty && logs.createaccount.get('password').errors?.required">
+       Mot de passe est requis
+        </div>
+        <div class="u-form-group">
+          <input type="password" placeholder="Confirm Password" formControlName="confirmpassword" />
+        </div>
+        <div class="validation "
+          *ngIf="logs.createaccount.get('confirmpassword').dirty && logs.createaccount.get('confirmpassword').errors?.required">
+          Mot de passe est requis
+        </div>
+        <div class="u-form-group">
+          <button [disabled]="!logs.createaccount.valid">Sign Up</button>
+        </div>
+      </form>
+    </ng-template>
+  </div>
+
+</header>

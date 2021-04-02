@@ -1,0 +1,108 @@
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Information personnel">
+
+    <div class="example-small-box mat-elevation-z4">
+
+      <table>
+
+        <tr>
+          <td>NOM </td>
+          <td>{{user.data.nom}}</td>
+
+        </tr>
+        <hr>
+        <tr>
+          <td>PRENOM </td>
+          <td>{{user.data.prenom}}</td>
+
+        </tr>
+        <hr>
+        <tr>
+          <td>Adresse</td>
+          <td>{{user.data.adresse.adresse}} {{user.data.adresse.postale}} {{user.data.adresse.ville}} </td>
+
+        </tr>
+        <hr>
+        <tr>
+          <td>Téléphone </td>
+          <td>+ 33 {{user.data.telephone}}</td>
+
+        </tr>
+        <hr>
+        <tr>
+          <td>Email</td>
+          <td>{{user.data.mail}}</td>
+
+        </tr>
+        <hr>
+
+
+      </table>
+    </div>
+  </mat-tab>
+  <mat-tab label="Modifier Information personnel">
+   
+    <div class="example-large-box mat-elevation-z4">
+      <ng-template [ngIf]="modification">
+        <h3 class="modifications">Modification terminé votre profil mis à jour prochaine connexion </h3> 
+         </ng-template >
+         <ng-template [ngIf]="modifications">
+          <h3 class="modifications">Numéro téléphone ou E-mail déja utilisé </h3> 
+         </ng-template>
+      <h3>Modification Informations</h3>
+      <form [formGroup]="profil.createaccount" (ngSubmit)="onSubmitupdate()" class="email-signup">
+        <div class="u-form-group">
+          <input type="text" [(ngModel)]="user.data.nom" placeholder="Nom" formControlName="nom" />
+        </div>
+        <div class="validation"
+          *ngIf="profil.createaccount.get('nom').dirty && profil.createaccount.get('nom').errors?.required">
+          Nom est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" [(ngModel)]="user.data.prenom" formControlName="prenom" />
+        </div>
+        <div class="validation"
+          *ngIf="profil.createaccount.get('prenom').dirty && profil.createaccount.get('prenom').errors?.required">
+          Prenom est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" [(ngModel)]="user.data.adresse.adresse" formControlName="adresse" />
+        </div>
+        <div class="validation"
+          *ngIf="profil.createaccount.get('adresse').dirty && profil.createaccount.get('adresse').errors?.required">
+          Adresse est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" [(ngModel)]="user.data.adresse.ville" formControlName="ville" />
+        </div>
+        <div class="validation"
+          *ngIf="profil.createaccount.get('ville').dirty && profil.createaccount.get('ville').errors?.required">
+          Ville est requis
+        </div>
+        <div class="u-form-group">
+          <input type="text" [(ngModel)]="user.data.adresse.postale" formControlName="postale" />
+        </div>
+        <div class="validation"
+          *ngIf="profil.createaccount.get('postale').dirty && profil.createaccount.get('postale').errors?.required">
+          Code postale est requis
+        </div>
+        <div class="u-form-group">
+          <input placeholder="Téléphone"   [(ngModel)]="telephone"   type="tel" formControlName="telephone" />
+        </div>
+       
+        <div class="u-form-group">
+          <input placeholder="Email"  [(ngModel)]="mail"    type="email" placeholder="Email" formControlName="mail" />
+        </div>
+      
+        <div class="u-form-group">
+          <input placeholder="Mot de passe" [(ngModel)]="password"   type="password" placeholder="Password" formControlName="password" />
+        </div>
+        
+
+        <div class="u-form-group">
+          <button [disabled]="!profil.createaccount.valid">Sign Up</button>
+        </div>
+      </form>
+    </div>
+  </mat-tab>
+</mat-tab-group>
