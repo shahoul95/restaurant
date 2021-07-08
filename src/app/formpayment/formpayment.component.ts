@@ -26,7 +26,7 @@ export class FormpaymentComponent implements OnInit {
     this.account = false || localStorage.getItem('user');
     this.logout = false || localStorage.getItem('user');
 
-    this.basketSubscription = await this.commande.appareilsSubject.subscribe(
+    this.basketSubscription = await this.commande.produitSubject.subscribe(
       (appareils: any[]) => {
 
 

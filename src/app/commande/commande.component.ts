@@ -32,7 +32,7 @@ export class CommandeComponent implements OnInit {
     try {
       await this._menufilter.Menufilter("Entrées").then((res: any) => this.menu = res.data).catch(() => console.error('Failed!'));
       console.log(this.menu);
-      this.basketSubscription = await this.commande.appareilsSubject.subscribe(
+      this.basketSubscription = await this.commande.produitSubject.subscribe(
         (appareils: any[]) => {
 
 

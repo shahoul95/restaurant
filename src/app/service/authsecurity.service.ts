@@ -89,3 +89,43 @@ export class Authsecurityformpaymentservice {
 
 
 }
+@Injectable({
+  providedIn: 'root'
+})
+export class Authsecurityverifypassword {
+
+  constructor(private router: Router) { }
+
+  canActivate() {
+ 
+  const telephone = localStorage.getItem('telephone');
+  
+    if(telephone == null){
+      this.router.navigateByUrl('/forgotpassword')
+    }
+    return true;
+
+  }
+
+
+}
+@Injectable({
+  providedIn: 'root'
+})
+export class Authsecuritychangepassword {
+
+  constructor(private router: Router) { }
+
+  canActivate() {
+  
+  const telephoneid = localStorage.getItem('telephoneid');
+  
+    if(telephoneid == null){
+      this.router.navigateByUrl('/forgotpassword')
+    }
+    return true;
+
+  }
+
+
+}

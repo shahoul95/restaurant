@@ -16,7 +16,7 @@ export class CommandeService {
   items: Array<any> = [];
   item: any = []
   storage: any;
-  appareilsSubject = new Subject<any[]>();
+ produitSubject = new Subject<any[]>();
   paniers = new Subject<boolean>();
   verification: boolean;
   parselocal: any;
@@ -42,7 +42,7 @@ export class CommandeService {
       console.log(this.price)
 
     });
-    this.appareilsSubject.next(JSON.parse(this.storage))
+    this.produitSubject.next(JSON.parse(this.storage))
     this.paniers.next(this.verification);
     this.subjectprice.next(this.price);
   }
@@ -90,7 +90,7 @@ export class CommandeService {
 
   }
 
-  ChangeQte(quantite: any, id: any) {
+  ChangeQtes(quantite: any, id: any) {
 
     this.items.filter(product => product._id == id).map(element => {
       //met à jour la quantité du produit dans le panier

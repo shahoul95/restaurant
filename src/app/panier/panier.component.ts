@@ -34,7 +34,7 @@ export class PanierComponent implements OnInit {
     this.account = false || localStorage.getItem('user');
     this.logout = false || localStorage.getItem('user');
 
-    this.basketSubscription = await this.commande.appareilsSubject.subscribe(
+    this.basketSubscription = await this.commande.produitSubject.subscribe(
       (appareils: any[]) => {
         console.log(this.panier)
 
@@ -82,7 +82,7 @@ export class PanierComponent implements OnInit {
   ChangeQte(quantites: any, id: any) {
 
 
-    this.commande.ChangeQte(quantites.target.value, id)
+    this.commande.ChangeQtes(quantites.target.value, id)
 
   }
   checkout(amount: any) {

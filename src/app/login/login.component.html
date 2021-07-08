@@ -68,7 +68,7 @@
           <button [disabled]="!logs.login.valid">Connecter</button>
         </div>
         <div class="u-form-group">
-          <a href="#" class="forgot-password">Forgot password?</a>
+          <a href="/forgotpassword" class="forgot-password">Forgot password?</a>
         </div>
         <div class="social-login">
           <a href="#">
@@ -144,13 +144,7 @@
           *ngIf="logs.createaccount.get('password').dirty && logs.createaccount.get('password').errors?.required">
        Mot de passe est requis
         </div>
-        <div class="u-form-group">
-          <input type="password" placeholder="Confirm Password" formControlName="confirmpassword" />
-        </div>
-        <div class="validation "
-          *ngIf="logs.createaccount.get('confirmpassword').dirty && logs.createaccount.get('confirmpassword').errors?.required">
-          Mot de passe est requis
-        </div>
+        
         <div class="u-form-group">
           <button [disabled]="!logs.createaccount.valid">Sign Up</button>
         </div>

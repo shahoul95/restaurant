@@ -22,6 +22,9 @@ import { StripeModule } from "stripe-angular";
 import { FormpaymentComponent } from './formpayment/formpayment.component';
 import { PaymentsucessComponent } from './paymentsucess/paymentsucess.component';
 import { ContactComponent } from './contact/contact.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { VerifypasswordComponent } from './verifypassword/verifypassword.component';
+import { ChangepasswordComponent } from './changepassword/changepassword.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,9 @@ import { ContactComponent } from './contact/contact.component';
     FormpaymentComponent,
     PaymentsucessComponent,
     ContactComponent,
+    ForgotPasswordComponent,
+    VerifypasswordComponent,
+    ChangepasswordComponent,
 
   ],
   imports: [
