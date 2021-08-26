@@ -9,7 +9,7 @@ export class MenuService {
 
   async Menufilter(categories: any) {
     try {
-      this.response = await axios.get('http://localhost:8080/getproduits/' + categories);
+      this.response = await axios.get('https://backend-restaurants.herokuapp.com/getproduits/' + categories);
       return this.response;
 
     }
