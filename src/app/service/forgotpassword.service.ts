@@ -91,7 +91,7 @@ return this.changepassword;
    try{
       if(localStorage.getItem('telephoneid')){
         let telephoneid = localStorage.getItem('telephoneid')
-        this.result = await axios.patch(`http://localhost:8080/finduserpasswordchange/${telephoneid}`,password).then(result=> {return result;}).catch(error=>{return error});
+        this.result = await axios.patch(`https://backend-restaurants.herokuapp.com/finduserpasswordchange/${telephoneid}`,password).then(result=> {return result;}).catch(error=>{return error});
         return this.result;
       }
    }catch(error){

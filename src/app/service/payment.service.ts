@@ -100,7 +100,7 @@ export class PaymentService {
     }
     console.log();
     try {
-      this.result = await axios.post('http://localhost:8080/createorder', commande);
+      this.result = await axios.post('https://backend-restaurants.herokuapp.com/createorder', commande);
       if (this.result.data._id) {
         this.paymentsubject.next(this.result.data._id)
       }
@@ -124,7 +124,7 @@ export class PaymentService {
           produit: JSON.parse(this.productitems),
           clientid: this.ids.id
         }
-        this.results = await axios.post('http://localhost:8080/createorderproduct', panier).then(res => { }).catch(x => { 'failed' })
+        this.results = await axios.post('https://backend-restaurants.herokuapp.com/createorderproduct', panier).then(res => { }).catch(x => { 'failed' })
 
 
       });
@@ -148,7 +148,7 @@ export class PaymentService {
 
         }
         setTimeout(async () => {
-          this.resultpaiement = await axios.post('http://localhost:8080/paiement', paiement).then(x => { console.log(x) }).catch(x => { 'failed' })
+          this.resultpaiement = await axios.post('https://backend-restaurants.herokuapp.com/paiement', paiement).then(x => { console.log(x) }).catch(x => { 'failed' })
         }, 5000);
 
 
@@ -171,7 +171,7 @@ export class PaymentService {
             amount: this.amount
           }
           setTimeout(async () => {
-            this.email = await axios.post('http://localhost:8080/getorderpaiement', product).then(x => {
+            this.email = await axios.post('https://backend-restaurants.herokuapp.com/getorderpaiement', product).then(x => {
               if (x.data == 1) {
                 localStorage.removeItem('amount');
                 localStorage.removeItem('tokenid')

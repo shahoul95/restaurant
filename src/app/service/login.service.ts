@@ -96,7 +96,7 @@ export class LoginService {
       this.users = localStorage.getItem('user');
       this.id = JSON.parse(this.users)
       if (this.id.id && this.id.token) {
-        this.userfinbyid = await axios.get(`http://localhost:8080/profile/${this.id.id}`, { headers: { 'Authorization': `Bearer ${this.id.token}` } })
+        this.userfinbyid = await axios.get(`https://backend-restaurants.herokuapp.com/profile/${this.id.id}`, { headers: { 'Authorization': `Bearer ${this.id.token}` } })
         this.profilsubject.next(this.userfinbyid);
       }
     } catch (error) {
@@ -108,7 +108,7 @@ export class LoginService {
       this.users = localStorage.getItem('user');
       this.id = JSON.parse(this.users)
       if (this.id.id) {
-        this.update = await axios.patch(`http://localhost:8080/profileupdate/${this.id.id}`, information).then(x => {
+        this.update = await axios.patch(`https://backend-restaurants.herokuapp.com/profileupdate/${this.id.id}`, information).then(x => {
           return x;
         }).catch(x => { return false });
 

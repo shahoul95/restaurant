@@ -21,7 +21,7 @@ export class ContactService {
   }
 
   async SendContact(contact: any) {
-    this.contact = await axios.post('http://localhost:8080/sendmail', contact).then(body => {
+    this.contact = await axios.post('https://backend-restaurants.herokuapp.com/sendmail', contact).then(body => {
       if (body) {
         return body;
 
