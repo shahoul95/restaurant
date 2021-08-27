@@ -52,7 +52,7 @@ export class LoginService {
   async loginCreate(user: any) {
 
     try {
-      this.logincreate = await axios.post('http://localhost:8080/createuser', { nom: user.nom, prenom: user.prenom, adresse: user.adresses, telephone: user.telephone, mail: user.mail, password: user.password });
+      this.logincreate = await axios.post('https://backend-restaurants.herokuapp.com/createuser', { nom: user.nom, prenom: user.prenom, adresse: user.adresses, telephone: user.telephone, mail: user.mail, password: user.password });
       if (this.logincreate.status == 201) {
         this.createaccount.reset()
         return true;
@@ -69,7 +69,7 @@ export class LoginService {
 
     try {
 
-      this.loginconnect = await axios.post('http://localhost:8080/login', user);
+      this.loginconnect = await axios.post('https://backend-restaurants.herokuapp.com/login', user);
       if (this.loginconnect.status == 200) {
 
 
