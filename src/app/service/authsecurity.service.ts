@@ -73,8 +73,7 @@ export class Authsecurityformpaymentservice {
   canActivate() {
     const isNoSignedIn = localStorage.getItem("data");
     const amount = localStorage.getItem('amount');
-    console.log(amount)
-    console.log(isNoSignedIn);
+  
     if (isNoSignedIn == "[]") {
       this.router.navigateByUrl('/accueil')
       return false;

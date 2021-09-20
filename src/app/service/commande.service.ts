@@ -30,7 +30,7 @@ export class CommandeService {
     this.storage = localStorage.getItem('data');
     this.parselocal = localStorage.getItem('data');
     this.items = JSON.parse(this.parselocal);
-    console.log(this.items);
+
     this.price = 0;
     this.items.forEach(product => {
       if (product.quantite) {
@@ -38,8 +38,7 @@ export class CommandeService {
       } else {
         this.price += (parseFloat(product.prix))
       }
-      console.log(this.items)
-      console.log(this.price)
+
 
     });
     this.produitSubject.next(JSON.parse(this.storage))
@@ -81,9 +80,9 @@ export class CommandeService {
   deleteProduct(data: any) {
     this.parselocal = localStorage.getItem('data');
     this.items = JSON.parse(this.parselocal);
-    console.log(this.items);
+
     this.items = this.items.filter(x => x._id !== data._id);
-    console.log(this.items);
+  
     localStorage.setItem('data', JSON.stringify(this.items));
     this.verification = true;
     this.getItems();

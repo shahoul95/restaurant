@@ -55,8 +55,7 @@ export class PaymentService {
       token: function (token: any) {
         // You can access the token ID with `token.id`.
         // Get the token ID to your server-side code for use.
-        console.log(token)
-        console.log(amount)
+     
         if (token) {
 
           localStorage.setItem('client', JSON.stringify(clientpayment));
@@ -98,7 +97,7 @@ export class PaymentService {
       client: JSON.parse(this.client),
       user: JSON.parse(this.user)
     }
-    console.log();
+  
     try {
       this.result = await axios.post('https://backend-restaurants.herokuapp.com/createorder', commande);
       if (this.result.data._id) {

@@ -67,7 +67,7 @@ return this.changepassword;
         telephone: parseInt(this.number)
 
       }
-      console.log(number);
+   
       this.result = await axios.post('https://backend-restaurants.herokuapp.com/sendtoken', number).then(result => { return result }).catch(error => { return error });
       return this.result;
 
@@ -77,7 +77,7 @@ return this.changepassword;
   }
   async Findusernumber(telephone: any) {
     try {
-      console.log(telephone);
+     
       this.result = await axios.post('https://backend-restaurants.herokuapp.com/findusernumber', telephone).then(result => { return result }).catch(error => { return error });
       return this.result;
 
