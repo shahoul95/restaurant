@@ -36,12 +36,12 @@ export class PanierComponent implements OnInit {
 
     this.basketSubscription = await this.commande.produitSubject.subscribe(
       (appareils: any[]) => {
-        console.log(this.panier)
+       
 
         this.panier = appareils;
 
         this.panieritems = appareils === null ? 0 : appareils.length;
-        console.log(this.panier)
+     
         // this.totals = this.panier.map(a  => parseFloat(a.prix.replace(/,/gi, ".").substring(0,1))).reduce(function(a, b)
         // {
         //   return a + b;
@@ -69,7 +69,7 @@ export class PanierComponent implements OnInit {
   }
 
   Remove(remove: any) {
-    console.log(this.panier)
+
 
 
     this.commande.deleteProduct(remove);

@@ -21,7 +21,7 @@ result : any;
         password: secondpassword
       }
      this.result =  await this.forgotpassword.Finduserchangepassword(data).then(result=> {return result}).catch(error=> {return error});
-     console.log(this.result)
+  
      if(this.result.data.success){
        localStorage.removeItem('telephoneid')
        this.router.navigateByUrl('login')

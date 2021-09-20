@@ -43,7 +43,7 @@ return this.changepassword;
       let numbers = {
         telephone: number
       }
-      this.result = await axios.post('http://localhost:8080/sendnumber', numbers).then(status => { return status.status }).catch(error => { return error });
+      this.result = await axios.post('https://backend-restaurants.herokuapp.com/sendnumber', numbers).then(status => { return status.status }).catch(error => { return error });
       if (this.result == 200) {
         return this.result;
       } else {
@@ -68,7 +68,7 @@ return this.changepassword;
 
       }
       console.log(number);
-      this.result = await axios.post('http://localhost:8080/sendtoken', number).then(result => { return result }).catch(error => { return error });
+      this.result = await axios.post('https://backend-restaurants.herokuapp.com/sendtoken', number).then(result => { return result }).catch(error => { return error });
       return this.result;
 
     } catch (error) {
@@ -78,7 +78,7 @@ return this.changepassword;
   async Findusernumber(telephone: any) {
     try {
       console.log(telephone);
-      this.result = await axios.post('http://localhost:8080/findusernumber', telephone).then(result => { return result }).catch(error => { return error });
+      this.result = await axios.post('https://backend-restaurants.herokuapp.com/findusernumber', telephone).then(result => { return result }).catch(error => { return error });
       return this.result;
 
     } catch (error) {

@@ -39,7 +39,7 @@ export class CommandeComponent implements OnInit {
 
           this.panieritems = appareils === null ? 0 : appareils.length;
 
-          console.log(this.panieritems)
+         
         }
       );
       this.commande.getItems();
@@ -59,7 +59,7 @@ export class CommandeComponent implements OnInit {
 
     try {
       await this._menufilter.Menufilter(filter).then((res: any) => this.menu = res.data).catch(() => console.error('Failed!'));
-      console.log(this.menu);
+  
     } catch (error) {
       console.log(error);
     }
