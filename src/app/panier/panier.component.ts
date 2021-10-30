@@ -41,11 +41,6 @@ export class PanierComponent implements OnInit {
         this.panier = appareils;
 
         this.panieritems = appareils === null ? 0 : appareils.length;
-     
-        // this.totals = this.panier.map(a  => parseFloat(a.prix.replace(/,/gi, ".").substring(0,1))).reduce(function(a, b)
-        // {
-        //   return a + b;
-        // });
 
 
         if (this.panier.length > 0) {
